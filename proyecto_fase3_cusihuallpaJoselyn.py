@@ -157,7 +157,7 @@ if acceso_permitido: #Inicia el bloque condicional del menú; solo se ejecuta si
         print("-" * 50) #Imprime una línea de separación.
 
         total_general = 0
-        # Recorremos el diccionario del carrito
+        # Recorremos el diccionario del carrito 
         for prod, cant in carrito.items():
             precio_u = menu[prod]
             subtotal = cant * precio_u
