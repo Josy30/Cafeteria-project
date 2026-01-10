@@ -159,7 +159,7 @@ if acceso_permitido: #Inicia el bloque condicional del menú; solo se ejecuta si
         total_general = 0
         # Recorremos el diccionario del carrito 
         for prod, cant in carrito.items():
-            precio_u = menu[prod]
+            precio_u = menu[prod] 
             subtotal = cant * precio_u 
             total_general += subtotal
             print(f"{cant:<7} {prod.capitalize():<20} {f'${precio_u}':>10} {f'${subtotal}':>10}")
