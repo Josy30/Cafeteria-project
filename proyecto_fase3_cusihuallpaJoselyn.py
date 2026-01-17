@@ -110,7 +110,7 @@ if acceso_permitido: #Inicia el bloque condicional del menú; solo se ejecuta si
 
         #         #Uso condicionales para actualizar el contador de unidades segun el índice i del producto.
         #         if i == 0:
-        #             cafe_unidad += cantidad_pedida  
+        #             cafe_unidad += cantidad_pedida
         #         elif i == 1:
         #             sandwich_unidad += cantidad_pedida
         #         elif i == 2:
