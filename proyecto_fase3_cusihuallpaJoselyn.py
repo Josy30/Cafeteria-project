@@ -7,10 +7,21 @@ print ( "\nBienvenido, para hacer su pedido por favor inicie secion.")
 # acceso del usuario para iniciar secion
 # usuario_correcto = "josy" #cambio por diccionario credenciales
 # contrasena_correcta = "josy" #cambio por diccionario credenciales
+
 credenciales = {"usuario": "josy", "contrasena": "josy"} # Diccionario de acceso
 maximo_intentos = 3 
 intentos = 0 #Inicializo el contador de intentos fallidos.
 acceso_permitido = False # inicializo en un booleano false porque el usuario aún no ha iniciado sesión
+
+
+
+
+
+
+
+
+
+
 
 while intentos < maximo_intentos: #Inicia un bucle while que se repite mientras el número de intentos sea menor a 3.
 
