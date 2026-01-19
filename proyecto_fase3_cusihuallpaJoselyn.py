@@ -1,79 +1,34 @@
 from datetime import datetime  # Para la gestión de fechas y horas
 
-print (" CAFETERIA DMITRIEV ".center(50,'*'))
 
-print ( "\nBienvenido, para hacer su pedido por favor inicie secion.")
+# acceso_permitido = False # inicializo en un booleano false porque el usuario aún no ha iniciado sesión
 
-# acceso del usuario para iniciar secion
-# usuario_correcto = "josy" #cambio por diccionario credenciales
-# contrasena_correcta = "josy" #cambio por diccionario credenciales
+def iniciar_sesion(credenciales, maximo_intentos):
+    intentos = 0 #Inicializo el contador de intentos fallidos.
+    while intentos < maximo_intentos: #Inicia un bucle while que se repite mientras el número de intentos sea menor a 3.
+        usuario_ingresado = input("Usuario: ") #Pide al usuario que ingrese su nombre de usuario.
+        contrasena_ingresada = input(f"ingresa tu contrasena intento {intentos+1} de {maximo_intentos}: ") #Pide al usuario la contraseña, mostrando el número de intento actual.
+        maximo_intentos = 3 
+        # if usuario_ingresado == usuario_correcto and contrasena_ingresada == contrasena_correcta: #Comprueba si ambas credenciales ingresadas coinciden con las correctas
+        if usuario_ingresado == credenciales["usuario"] and contrasena_ingresada == credenciales["contrasena"]:
+            # acceso_permitido = True #Si son correctas, establece la bandera a True.
+            print("\n" +"Acceso permitido, Bienvenido !!".center(50,' '))
+            return True
+            # break #Termina el bucle while inmediatamente, ya que el acceso fue exitoso.
+        intentos +=1 #Si el acceso falló, incrementa el contador de intentos en 1.
 
-credenciales = {"usuario": "josy", "contrasena": "josy"} # Diccionario de acceso
-maximo_intentos = 3 
-intentos = 0 #Inicializo el contador de intentos fallidos.
-acceso_permitido = False # inicializo en un booleano false porque el usuario aún no ha iniciado sesión
-
-
-
-
-
-
-
-
-
-
-
-while intentos < maximo_intentos: #Inicia un bucle while que se repite mientras el número de intentos sea menor a 3.
-
-    usuario_ingresado = input("Usuario: ") #Pide al usuario que ingrese su nombre de usuario.
-    contrasena_ingresada = input(f"ingresa tu contrasena intento {intentos+1} de {maximo_intentos}: ") #Pide al usuario la contraseña, mostrando el número de intento actual.
-
-    # if usuario_ingresado == usuario_correcto and contrasena_ingresada == contrasena_correcta: #Comprueba si ambas credenciales ingresadas coinciden con las correctas
-    if usuario_ingresado == credenciales["usuario"] and contrasena_ingresada == credenciales["contrasena"]:
-        acceso_permitido = True #Si son correctas, establece la bandera a True.
-        print("\n" +"Acceso permitido, Bienvenido !!".center(50,' '))
-        break #Termina el bucle while inmediatamente, ya que el acceso fue exitoso.
-    intentos +=1 #Si el acceso falló, incrementa el contador de intentos en 1.
-
-    if intentos < maximo_intentos: #Verifica si aún quedan intentos disponibles.
-        print("Usuario o contraseña incorrecta. Intenta nuevamente para hacer tu pedido.") 
-    # Si intentos == maximo_intentos, salimos del bucle y el else de la linea 120 se ejecuta.
+        if intentos < maximo_intentos: #Verifica si aún quedan intentos disponibles.
+            print("Usuario o contraseña incorrecta. Intenta nuevamente para hacer tu pedido.") 
+            # Si intentos == maximo_intentos, salimos del bucle y el else de la linea 120 se ejecuta.
+    return False
 
 # menu
-if acceso_permitido: #Inicia el bloque condicional del menú; solo se ejecuta si el login fue exitoso.
-    print ("\n" +" MENU ".center(50,'*'))
-
-    #Inicializa contadores para la cantidad de cada producto pedido.
-    # cafe_unidad = 0
-    # sandwich_unidad = 0
-    # pastel_unidad = 0
-    # expreso_unidad = 0
-    # te_unidad = 0
-    
-    # Cambio los contadores por un diccionario de productos: clave=nombre, valor=precio
-    menu = {
-        "cafe": 6,
-        "sandwich": 10,
-        "pastel": 15,
-        "expreso": 4,
-        "te": 8
-    }
-    
-
-    # cambio tupla de productos por set de productos
-    # productos = ("cafe", "sandwich" , "pastel", "expreso", "te")
-    # precios = (6,10,15,4,8) #(mismo índice que la tupla linea 40)
-
-    # Creo una lista para poder usar numeros en lugar de escribir los nombres de los productos (1, 2, 3...), Permite que pueda asignarle un número (1, 2, 3...) para que el cliente elija.
-    lista_productos = list(menu.keys())
-
+def tomar_pedido(menu, lista_productos):
     # Diccionario para guardar el carrito (lo que el cliente elija)
     carrito = {}
-
     continuar = True #Inicializa una variable booleana para controlar el bucle while de la linea 43 y asegurar que se ejecute al menos 1 vez para pedir al cliente el producto que desea.
     # suma_precio = 0 #Inicializa la variable que acumulará el costo total del pedido.
 
-    
     while continuar: #Inicia el bucle de pedido, que se repite hasta que el usuario elija no.
         #el codigo siguiente ya no es necesario porque ya no se elije los productos por nombre 
         # producto = input("\nElije tu producto : cafe($6), sandwich($10) , pastel($15), expreso($4), te($8) \n").lower()
@@ -86,12 +41,12 @@ if acceso_permitido: #Inicia el bloque condicional del menú; solo se ejecuta si
         
         opcion = input("\nSeleccione el NÚMERO del producto: ")
 
-        # Validamos que sea un número y esté dentro del rango del menú
+            # Validamos que sea un número y esté dentro del rango del menú
         if opcion.isdigit() and 1 <= int(opcion) <= len(lista_productos):
             indice = int(opcion) - 1
             producto_elegido = lista_productos[indice]
-        # if producto in nombres_productos:
-        #     # Validación de cantidad
+            # if producto in nombres_productos:
+            # Validación de cantidad
 
             while True: #Inicia un bucle infinito para la validación de la cantidad.
                 cantidad = input(f"¿Cuántos {producto_elegido} deseas?: ")
@@ -101,12 +56,14 @@ if acceso_permitido: #Inicia el bloque condicional del menú; solo se ejecuta si
                     # Guardamos o actualizamos en el diccionario 'carrito'
                     carrito[producto_elegido] = carrito.get(producto_elegido, 0) + cantidad_pedida
                     break
-                print("Por favor, ingrese una cantidad mayor a 0")
+                else:
+                    print("Por favor, ingrese una cantidad mayor a 0")
 
-                # if cantidad_pedida>0: #Comprueba si la cantidad es positiva.
-                #     break #Si es válida, sale del bucle de validación de cantidad.
-                # else: #Si no es mayor que cero.
-                #     print("Por favor, ingrese una cantidad mayor") #Muestra un mensaje de error y vuelve a pedir la cantidad.
+
+                    # if cantidad_pedida>0: #Comprueba si la cantidad es positiva.
+                    #     break #Si es válida, sale del bucle de validación de cantidad.
+                    # else: #Si no es mayor que cero.
+                    #     print("Por favor, ingrese una cantidad mayor") #Muestra un mensaje de error y vuelve a pedir la cantidad.
         else: #Si la entrada no es un dígito.
             print("Lo sentimos, ese producto no está en el menú.") #Muestra un mensaje de error y vuelve a pedir el producto.
             continue
@@ -145,7 +102,7 @@ if acceso_permitido: #Inicia el bloque condicional del menú; solo se ejecuta si
                 continuar = (respuesta == "si")
                 break
             print("Por favor, responde 'si' o 'no'.")
-            
+    return carrito # Devolvemos la compra terminada
             
             # if respuesta == "si": #Evalúa la respuesta: si es "si", continúa; si es "no", establece continuar = False para detener el bucle principal.
             #     continuar = True
@@ -156,7 +113,59 @@ if acceso_permitido: #Inicia el bloque condicional del menú; solo se ejecuta si
             # else:
             #     print("Respuesta no válida. Escribe 'si' o 'no'.") #Si la respuesta no es "si" o "no", muestra un error y repite la pregunta.
 
+def main():
+    print (" CAFETERIA DMITRIEV ".center(50,'*'))
+    print ( "\nBienvenido, para hacer su pedido por favor inicie secion.")
+    # acceso del usuario para iniciar secion
+
+    credenciales = {"usuario": "josy", "contrasena": "josy"} # Diccionario de acceso
+    menu = {
+        "cafe": 6,
+        "sandwich": 10,
+        "pastel": 15,
+        "expreso": 4,
+        "te": 8
+    }
+    lista_productos = list(menu.keys())
+    # Intentar entrar
+    # El 'if' ahora solo decide si llamar a las otras máquinas o no
+    if iniciar_sesion(credenciales, 3): 
+        # Si entró, pedir productos
+        carrito = tomar_pedido(menu, lista_productos)
+        imprimir_ticket(carrito, menu)
+    # Mostrar el ticket final
+    # imprimir_ticket(carrito, menu)
+    # Si falló el inicio de sesión          
+    else:
+        print("\nAcceso denegado. Límite de intentos alcanzado.")
+
+print ("\n" +" MENU ".center(50,'*'))
+
+    #Inicializa contadores para la cantidad de cada producto pedido.
+    # cafe_unidad = 0
+    # sandwich_unidad = 0
+    # pastel_unidad = 0
+    # expreso_unidad = 0
+    # te_unidad = 0
+    
+    # Cambio los contadores por un diccionario de productos: clave=nombre, valor=precio
+    
+    
+    # cambio tupla de productos por set de productos
+    # productos = ("cafe", "sandwich" , "pastel", "expreso", "te")
+    # precios = (6,10,15,4,8) #(mismo índice que la tupla linea 40)
+
+    # Creo una lista para poder usar numeros en lugar de escribir los nombres de los productos (1, 2, 3...), Permite que pueda asignarle un número (1, 2, 3...) para que el cliente elija.
+    
+if __name__ == "__main__":
+    main()
+
 # resumen del pedido
+def imprimir_ticket(carrito, menu):
+    if not carrito:
+        print("No se realizó ningún pedido.")
+        return
+
     if carrito:
         ahora = datetime.now() # Obtenemos fecha y hora actual
         fecha_formateada = ahora.strftime("%d/%m/%Y %H:%M:%S")
@@ -193,6 +202,11 @@ if acceso_permitido: #Inicia el bloque condicional del menú; solo se ejecuta si
     else:
         print("No se realizó ningún pedido.")
 
-else: #Bloque else del condicional inicial (if acceso_permitido:).
-    print("Acceso denegado. Límite de intentos alcanzado.") #Mensaje final si se falló la autenticación.
+
+
+# if acceso_permitido: #Inicia el bloque condicional del menú; solo se ejecuta si el login fue exitoso.
+        
+    
+# else: #Bloque else del condicional inicial (if acceso_permitido:).
+#     print("Acceso denegado. Límite de intentos alcanzado.") #Mensaje final si se falló la autenticación.
     
