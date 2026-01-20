@@ -200,7 +200,7 @@ def imprimir_ticket(carrito, menu):
         print(f"{'TOTAL A PAGAR:':<37} {f'${total_general}':>11}")
         # print(f"{'Total productos':<21} {f'${suma_precio}':>17}") #Imprime el Total Final del pedido.
     else:
-        print("No se realizó ningún pedido.")
+        print("No se realizó ningún pedido.") 
 
 
 
