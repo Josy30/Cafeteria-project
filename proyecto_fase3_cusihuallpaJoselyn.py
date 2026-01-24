@@ -1,14 +1,11 @@
 from datetime import datetime  # Para la gestión de fechas y horas
 
-
-# acceso_permitido = False # inicializo en un booleano false porque el usuario aún no ha iniciado sesión
-
 def iniciar_sesion(credenciales, maximo_intentos):
     intentos = 0 #Inicializo el contador de intentos fallidos.
+    
     while intentos < maximo_intentos: #Inicia un bucle while que se repite mientras el número de intentos sea menor a 3.
         usuario_ingresado = input("Usuario: ") #Pide al usuario que ingrese su nombre de usuario.
         contrasena_ingresada = input(f"ingresa tu contrasena intento {intentos+1} de {maximo_intentos}: ") #Pide al usuario la contraseña, mostrando el número de intento actual.
-        maximo_intentos = 3 
         # if usuario_ingresado == usuario_correcto and contrasena_ingresada == contrasena_correcta: #Comprueba si ambas credenciales ingresadas coinciden con las correctas
         if usuario_ingresado == credenciales["usuario"] and contrasena_ingresada == credenciales["contrasena"]:
             # acceso_permitido = True #Si son correctas, establece la bandera a True.
@@ -41,7 +38,6 @@ def tomar_pedido(menu, lista_productos):
         
         opcion = input("\nSeleccione el NÚMERO del producto: ")
 
-            # Validamos que sea un número y esté dentro del rango del menú
         if opcion.isdigit() and 1 <= int(opcion) <= len(lista_productos):
             indice = int(opcion) - 1
             producto_elegido = lista_productos[indice]
@@ -68,34 +64,27 @@ def tomar_pedido(menu, lista_productos):
             print("Lo sentimos, ese producto no está en el menú.") #Muestra un mensaje de error y vuelve a pedir el producto.
             continue
 
-        # producto_encontrado = False #Inicializo en false porque hasta esta linea aún se ha buscado o encontrado el producto en la tupla de productos validos
-
-        # Bucle para encontrar el producto y calcular el precio
-        # for i in range(len(productos)): #Inicia un bucle for que itera sobre los índices de la tupla productos.
-
-        #     if producto == productos[i]: #Comprueba si el producto ingresado coincide con el producto en el índice i.
-        #         suma_precio += cantidad_pedida * precios[i] #Suma el costo del producto (cantidad * precio) al total acumulado.
-
-        #         #Uso condicionales para actualizar el contador de unidades segun el índice i del producto.
-        #         if i == 0:
-        #             cafe_unidad += cantidad_pedida
-        #         elif i == 1:
-        #             sandwich_unidad += cantidad_pedida
-        #         elif i == 2:
-        #             pastel_unidad += cantidad_pedida
-        #         elif i == 3:
-        #             expreso_unidad += cantidad_pedida
-        #         elif i == 4:
-        #             te_unidad += cantidad_pedida
-    
-        #         producto_encontrado = True #Establece la bandera a True indicando que el producto fue encontrado.
-        #         break # Producto encontrado, sale del bucle de búsqueda
-
-        # if not producto_encontrado: #Verifica si el producto no fue encontrado en la tupla.
-        #     print ("producto no encontrado, vuelve a ingresar por favor")
-        #     continue # Salta el resto del código en el bucle principal y regresa a la línea 43 a pedir otro producto.
-        
-        
+            # producto_encontrado = False #Inicializo en false porque hasta esta linea aún se ha buscado o encontrado el producto en la tupla de productos validos
+            # Bucle para encontrar el producto y calcular el precio
+            # for i in range(len(productos)): #Inicia un bucle for que itera sobre los índices de la tupla productos.
+            #     if producto == productos[i]: #Comprueba si el producto ingresado coincide con el producto en el índice i.
+            #         suma_precio += cantidad_pedida * precios[i] #Suma el costo del producto (cantidad * precio) al total acumulado.
+            #         #Uso condicionales para actualizar el contador de unidades segun el índice i del producto.
+            #         if i == 0:
+            #             cafe_unidad += cantidad_pedida
+            #         elif i == 1:
+            #             sandwich_unidad += cantidad_pedida
+            #         elif i == 2:
+            #             pastel_unidad += cantidad_pedida
+            #         elif i == 3:
+            #             expreso_unidad += cantidad_pedida
+            #         elif i == 4:
+            #             te_unidad += cantidad_pedida
+            #         producto_encontrado = True #Establece la bandera a True indicando que el producto fue encontrado.
+            #         break # Producto encontrado, sale del bucle de búsqueda
+            # if not producto_encontrado: #Verifica si el producto no fue encontrado en la tupla.
+            #     print ("producto no encontrado, vuelve a ingresar por favor")
+            #     continue # Salta el resto del código en el bucle principal y regresa a la línea 43 a pedir otro producto.
         while True: # Bucle para preguntar si quiere seguir pidiendo algo mas
             respuesta = input("Quiere pedir algo mas si/no: ?\n").lower() #Pide la respuesta y la convierte a minúsculas.
             if respuesta in {"si", "no"}: # Usamos un set para validar la respuesta
@@ -113,12 +102,65 @@ def tomar_pedido(menu, lista_productos):
             # else:
             #     print("Respuesta no válida. Escribe 'si' o 'no'.") #Si la respuesta no es "si" o "no", muestra un error y repite la pregunta.
 
+# resumen del pedido
+def imprimir_ticket(carrito, menu):
+    if not carrito:
+        print("No se realizó ningún pedido.")
+        return
+    
+    if carrito:
+        ahora = datetime.now() # Obtenemos fecha y hora actual
+        fecha_formateada = ahora.strftime("%d/%m/%Y %H:%M:%S")
+        print("\n" +" Resumen de pedido ".center(50,'*'))
+        print(f"Fecha: {fecha_formateada}")
+        print("-" * 50) #Imprime una línea de separación.
+        print("\n" + f"{'Cant.':<7} {'Descripción':<20} {'Precio':>10} {'Total':>10}") #Imprime los encabezados de la tabla con formato de alineación (< izquierda, > derecha).
+        print("-" * 50) #Imprime una línea de separación.
+
+        total_general = 0
+        # Recorremos el diccionario del carrito 
+        for prod, cant in carrito.items():
+            precio_u = menu[prod] 
+            subtotal = cant * precio_u 
+            total_general += subtotal 
+            print(f"{cant:<7} {prod.capitalize():<20} {f'${precio_u}':>10} {f'${subtotal}':>10}")
+            #Crea una tupla con las cantidades finales de cada producto.
+            # productos_cantidad = (cafe_unidad, sandwich_unidad, pastel_unidad, expreso_unidad, te_unidad)
+            # #Inicia un bucle for que itera sobre los índices para generar las filas de la tabla.
+            # for item in range(len(productos)):
+            # productos[item] 
+            # productos_cantidad[item]
+            #Condicional crucial: Solo procesa e imprime la línea si la cantidad de ese producto es diferente que cero.
+            # if productos_cantidad[item] != 0:
+            #     total_producto = productos_cantidad[item]*precios[item] #Calcula el costo total por ese tipo de producto.
+            #     #Imprime la línea del producto (cantidad, nombre, precio unitario, precio total) utilizando f-strings para el formato.
+            #     print(f"{productos_cantidad[item]:<5} {productos[item].capitalize():<15} {f'${precios[item]}':>8} {f'${total_producto}':>8}")
+        print("-" * 50) #Imprime otra línea de separación.
+        print(f"{'TOTAL A PAGAR:':<37} {f'${total_general}':>11}")
+        # print(f"{'Total productos':<21} {f'${suma_precio}':>17}") #Imprime el Total Final del pedido.
+    else:
+        print("No se realizó ningún pedido.") 
+        # if acceso_permitido: #Inicia el bloque condicional del menú; solo se ejecuta si el login fue exitoso.
+        # else: #Bloque else del condicional inicial (if acceso_permitido:).
+        # print("Acceso denegado. Límite de intentos alcanzado.") #Mensaje final si se falló la autenticación.
+
+def entregar_pedido(carrito):
+    """Simula la entrega de los productos del carrito."""
+    print("\n" + " ESTADO DE ENTREGA ".center(50, '-'))
+    print("Preparando sus productos...")
+    
+    for producto, cantidad in carrito.items():
+        print(f"📦 Entregando: {cantidad} unidad(es) de {producto.capitalize()}...")
+    
+    print("\n" + "¡Pedido entregado con éxito! Que lo disfrute.".center(50))
+    print("-" * 50)
+
 def main():
     print (" CAFETERIA DMITRIEV ".center(50,'*'))
     print ( "\nBienvenido, para hacer su pedido por favor inicie secion.")
-    # acceso del usuario para iniciar secion
 
-    credenciales = {"usuario": "josy", "contrasena": "josy"} # Diccionario de acceso
+    credenciales = {"usuario": "josy", "contrasena": "josy"} 
+        # Diccionario de acceso
     menu = {
         "cafe": 6,
         "sandwich": 10,
@@ -127,19 +169,24 @@ def main():
         "te": 8
     }
     lista_productos = list(menu.keys())
-    # Intentar entrar
-    # El 'if' ahora solo decide si llamar a las otras máquinas o no
+        # Intentar entrar
+        # El 'if' ahora solo decide si llamar a las otras máquinas o no
     if iniciar_sesion(credenciales, 3): 
         # Si entró, pedir productos
+        print ("\n" +" MENU ".center(50,'*'))
         carrito = tomar_pedido(menu, lista_productos)
-        imprimir_ticket(carrito, menu)
-    # Mostrar el ticket final
-    # imprimir_ticket(carrito, menu)
-    # Si falló el inicio de sesión          
+
+        if carrito:
+            imprimir_ticket(carrito, menu)
+            entregar_pedido(carrito)
+        
+        # Mostrar el ticket final
+        # imprimir_ticket(carrito, menu)
+        # Si falló el inicio de sesión          
     else:
         print("\nAcceso denegado. Límite de intentos alcanzado.")
 
-print ("\n" +" MENU ".center(50,'*'))
+
 
     #Inicializa contadores para la cantidad de cada producto pedido.
     # cafe_unidad = 0
@@ -159,54 +206,3 @@ print ("\n" +" MENU ".center(50,'*'))
     
 if __name__ == "__main__":
     main()
-
-# resumen del pedido
-def imprimir_ticket(carrito, menu):
-    if not carrito:
-        print("No se realizó ningún pedido.")
-        return
-
-    if carrito:
-        ahora = datetime.now() # Obtenemos fecha y hora actual
-        fecha_formateada = ahora.strftime("%d/%m/%Y %H:%M:%S")
-
-        print("\n" +" Resumen de pedido ".center(50,'*'))
-        print(f"Fecha: {fecha_formateada}")
-        print("-" * 50) #Imprime una línea de separación.
-        print("\n" + f"{'Cant.':<7} {'Descripción':<20} {'Precio':>10} {'Total':>10}") #Imprime los encabezados de la tabla con formato de alineación (< izquierda, > derecha).
-        print("-" * 50) #Imprime una línea de separación.
-
-        total_general = 0
-        # Recorremos el diccionario del carrito 
-        for prod, cant in carrito.items():
-            precio_u = menu[prod] 
-            subtotal = cant * precio_u 
-            total_general += subtotal 
-            print(f"{cant:<7} {prod.capitalize():<20} {f'${precio_u}':>10} {f'${subtotal}':>10}")
-
-    #Crea una tupla con las cantidades finales de cada producto.
-    # productos_cantidad = (cafe_unidad, sandwich_unidad, pastel_unidad, expreso_unidad, te_unidad)
-
-    # #Inicia un bucle for que itera sobre los índices para generar las filas de la tabla.
-    # for item in range(len(productos)):
-    # productos[item] 
-    # productos_cantidad[item]
-        #Condicional crucial: Solo procesa e imprime la línea si la cantidad de ese producto es diferente que cero.
-        # if productos_cantidad[item] != 0:
-        #     total_producto = productos_cantidad[item]*precios[item] #Calcula el costo total por ese tipo de producto.
-        #     #Imprime la línea del producto (cantidad, nombre, precio unitario, precio total) utilizando f-strings para el formato.
-        #     print(f"{productos_cantidad[item]:<5} {productos[item].capitalize():<15} {f'${precios[item]}':>8} {f'${total_producto}':>8}")
-        print("-" * 50) #Imprime otra línea de separación.
-        print(f"{'TOTAL A PAGAR:':<37} {f'${total_general}':>11}")
-        # print(f"{'Total productos':<21} {f'${suma_precio}':>17}") #Imprime el Total Final del pedido.
-    else:
-        print("No se realizó ningún pedido.") 
-
-
-
-# if acceso_permitido: #Inicia el bloque condicional del menú; solo se ejecuta si el login fue exitoso.
-        
-    
-# else: #Bloque else del condicional inicial (if acceso_permitido:).
-#     print("Acceso denegado. Límite de intentos alcanzado.") #Mensaje final si se falló la autenticación.
-    
