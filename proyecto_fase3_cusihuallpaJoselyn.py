@@ -42,7 +42,7 @@ def tomar_pedido(menu, lista_productos):
             indice = int(opcion) - 1
             producto_elegido = lista_productos[indice]
             # if producto in nombres_productos:
-            # Validación de cantidad
+            # Validación de cantidad 
 
             while True: #Inicia un bucle infinito para la validación de la cantidad.
                 cantidad = input(f"¿Cuántos {producto_elegido} deseas?: ")
