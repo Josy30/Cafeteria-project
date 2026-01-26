@@ -196,8 +196,6 @@ def main():
     # te_unidad = 0
     
     # Cambio los contadores por un diccionario de productos: clave=nombre, valor=precio
-    
-    
     # cambio tupla de productos por set de productos
     # productos = ("cafe", "sandwich" , "pastel", "expreso", "te")
     # precios = (6,10,15,4,8) #(mismo índice que la tupla linea 40)
