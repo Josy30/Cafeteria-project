@@ -21,4 +21,4 @@ def main():
         print("\nAcceso denegado. Límite de intentos alcanzado.")
 
 if __name__ == "__main__":
-    main()
+    main() 
