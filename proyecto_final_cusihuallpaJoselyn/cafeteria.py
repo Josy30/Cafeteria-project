@@ -82,4 +82,4 @@ def entregar_pedido(carrito):
     print("\n" + " ESTADO DE ENTREGA ".center(50, '-'))
     for producto, cantidad in carrito.items():
         print(f"📦 Entregando: {cantidad} unidad(es) de {producto.capitalize()}...")
-    print("\n" + "¡Pedido entregado con éxito!".center(50))
+    print("\n" + "¡Pedido entregado con éxito!".center(50)) 
