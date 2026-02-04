@@ -75,7 +75,7 @@ def imprimir_ticket(carrito, menu):
     print(f"{'Subtotal :':<37} {f'${base_imponible:.2f}':>11}")
     print(f"{'IGV (18%):':<37} {f'${igv_calculado:.2f}':>11}")
     print("-" * 50)
-    print(f"{'TOTAL A PAGAR:':<37} {f'${total_general:.2f}':>11}")
+    print(f"{'TOTAL A PAGAR:':<37} {f'${total_general:.2f}':>11}") 
     print("-" * 50)
     
 def entregar_pedido(carrito):
