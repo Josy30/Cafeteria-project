@@ -78,7 +78,7 @@ def imprimir_ticket(carrito, menu):
     print(f"{'TOTAL A PAGAR:':<37} {f'${total_general:.2f}':>11}") 
     print("-" * 50)
     
-def entregar_pedido(carrito):
+def entregar_pedido(carrito): 
     print("\n" + " ESTADO DE ENTREGA ".center(50, '-'))
     for producto, cantidad in carrito.items():
         print(f"📦 Entregando: {cantidad} unidad(es) de {producto.capitalize()}...")
