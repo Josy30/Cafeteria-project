@@ -45,7 +45,7 @@ def tomar_pedido(menu, lista_productos):
                 continuar = (respuesta == "si")
                 break
             print("Respuesta no válida.")
-    return carrito
+    return carrito 
 
 def imprimir_ticket(carrito, menu):
     if not carrito:
