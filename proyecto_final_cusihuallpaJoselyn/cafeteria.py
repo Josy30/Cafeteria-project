@@ -50,7 +50,7 @@ def tomar_pedido(menu, lista_productos):
 def imprimir_ticket(carrito, menu):
     if not carrito:
         print("No se realizó ningún pedido.")
-        return
+        return 
     
     ahora = datetime.now()
     igv_porcentaje = 0.18
