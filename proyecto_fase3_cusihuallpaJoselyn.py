@@ -184,7 +184,7 @@ def main():
         # imprimir_ticket(carrito, menu)
         # Si falló el inicio de sesión          
     else:
-        print("\nAcceso denegado. Límite de intentos alcanzado.")
+        print("\nAcceso denegado. Límite de intentos alcanzado.") 
 
 
 
