@@ -22,7 +22,7 @@ def iniciar_sesion(credenciales, maximo_intentos):
 # menu
 def tomar_pedido(menu, lista_productos):
     # Diccionario para guardar el carrito (lo que el cliente elija)
-    carrito = {}
+    carrito = {} 
     continuar = True #Inicializa una variable booleana para controlar el bucle while de la linea 43 y asegurar que se ejecute al menos 1 vez para pedir al cliente el producto que desea.
     # suma_precio = 0 #Inicializa la variable que acumulará el costo total del pedido.
 
