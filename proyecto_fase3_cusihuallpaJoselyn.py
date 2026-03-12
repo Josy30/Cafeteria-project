@@ -1,6 +1,6 @@
 from datetime import datetime  # Para la gestión de fechas y horas
 
-def iniciar_sesion(credenciales, maximo_intentos):
+def iniciar_sesion(credenciales, maximo_intentos): 
     intentos = 0 #Inicializo el contador de intentos fallidos.
     
     while intentos < maximo_intentos: #Inicia un bucle while que se repite mientras el número de intentos sea menor a 3.
