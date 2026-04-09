@@ -45,7 +45,7 @@ def tomar_pedido(menu, lista_productos):
             # Validación de cantidad 
 
             while True: #Inicia un bucle infinito para la validación de la cantidad.
-                cantidad = input(f"¿Cuántos {producto_elegido} deseas?: ") 
+                cantidad = input(f"¿Cuántos {producto_elegido} deseas?: ")
 
                 if cantidad.isdigit() and int(cantidad) > 0: #Comprueba si la entrada es una cadena que contiene solo dígitos.
                     cantidad_pedida = int(cantidad) #Convierte la cadena a un número entero.
