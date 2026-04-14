@@ -53,7 +53,7 @@ def tomar_pedido(menu, lista_productos):
                     carrito[producto_elegido] = carrito.get(producto_elegido, 0) + cantidad_pedida
                     break
                 else:
-                    print("Por favor, ingrese una cantidad mayor a 0")
+                    print("Por favor, ingrese una cantidad mayor a 0") 
 
 
                     # if cantidad_pedida>0: #Comprueba si la cantidad es positiva.
