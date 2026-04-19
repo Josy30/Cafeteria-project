@@ -15,7 +15,7 @@ def iniciar_sesion(credenciales, maximo_intentos):
         intentos +=1 #Si el acceso falló, incrementa el contador de intentos en 1.
 
         if intentos < maximo_intentos: #Verifica si aún quedan intentos disponibles.
-            print("Usuario o contraseña incorrecta. Intenta nuevamente para hacer tu pedido.")
+            print("Usuario o contraseña incorrecta. Intenta nuevamente para hacer tu pedido.") 
             # Si intentos == maximo_intentos, salimos del bucle y el else de la linea 120 se ejecuta.
     return False 
 
