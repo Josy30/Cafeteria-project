@@ -34,7 +34,7 @@ def tomar_pedido(menu, lista_productos):
 
         # Mostramos el menú numerado para que el cliente elija fácil
         for i, nombre in enumerate(lista_productos, 1):
-            print(f"{i}. {nombre.capitalize()} - ${menu[nombre]}") 
+            print(f"{i}. {nombre.capitalize()} - ${menu[nombre]}")
         
         opcion = input("\nSeleccione el NÚMERO del producto: ")
 
