@@ -90,7 +90,7 @@ def tomar_pedido(menu, lista_productos):
             if respuesta in {"si", "no"}: # Usamos un set para validar la respuesta
                 continuar = (respuesta == "si")
                 break
-            print("Por favor, responde 'si' o 'no'.") 
+            print("Por favor, responde 'si' o 'no'.")
     return carrito # Devolvemos la compra terminada
             
             # if respuesta == "si": #Evalúa la respuesta: si es "si", continúa; si es "no", establece continuar = False para detener el bucle principal.
