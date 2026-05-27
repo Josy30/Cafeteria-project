@@ -147,7 +147,7 @@ def imprimir_ticket(carrito, menu):
 def entregar_pedido(carrito):
     """Simula la entrega de los productos del carrito."""
     print("\n" + " ESTADO DE ENTREGA ".center(50, '-'))
-    print("Preparando sus productos...")
+    print("Preparando sus productos...") 
     
     for producto, cantidad in carrito.items():
         print(f"📦 Entregando: {cantidad} unidad(es) de {producto.capitalize()}...")
