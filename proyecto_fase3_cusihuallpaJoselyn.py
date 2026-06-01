@@ -88,7 +88,7 @@ def tomar_pedido(menu, lista_productos):
         while True: # Bucle para preguntar si quiere seguir pidiendo algo mas
             respuesta = input("Quiere pedir algo mas si/no: ?\n").lower() #Pide la respuesta y la convierte a minúsculas.
             if respuesta in {"si", "no"}: # Usamos un set para validar la respuesta
-                continuar = (respuesta == "si") 
+                continuar = (respuesta == "si")
                 break
             print("Por favor, responde 'si' o 'no'.")
     return carrito # Devolvemos la compra terminada
