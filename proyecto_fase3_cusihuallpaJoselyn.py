@@ -111,7 +111,7 @@ def imprimir_ticket(carrito, menu):
     if carrito:
         ahora = datetime.now() # Obtenemos fecha y hora actual
         fecha_formateada = ahora.strftime("%d/%m/%Y %H:%M:%S")
-        print("\n" +" Resumen de pedido ".center(50,'*'))
+        print("\n" +" Resumen de pedido ".center(50,'*')) 
         print(f"Fecha: {fecha_formateada}")
         print("-" * 50) #Imprime una línea de separación.
         print("\n" + f"{'Cant.':<7} {'Descripción':<20} {'Precio':>10} {'Total':>10}") #Imprime los encabezados de la tabla con formato de alineación (< izquierda, > derecha).
