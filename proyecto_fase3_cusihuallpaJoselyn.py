@@ -139,7 +139,7 @@ def imprimir_ticket(carrito, menu):
         print(f"{'TOTAL A PAGAR:':<37} {f'${total_general}':>11}")
         # print(f"{'Total productos':<21} {f'${suma_precio}':>17}") #Imprime el Total Final del pedido.
     else:
-        print("No se realizó ningún pedido.") 
+        print("No se realizó ningún pedido.")
         # if acceso_permitido: #Inicia el bloque condicional del menú; solo se ejecuta si el login fue exitoso.
         # else: #Bloque else del condicional inicial (if acceso_permitido:).
         # print("Acceso denegado. Límite de intentos alcanzado.") #Mensaje final si se falló la autenticación.
