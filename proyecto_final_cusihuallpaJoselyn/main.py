@@ -12,7 +12,7 @@ def main():
 
     if iniciar_sesion(credenciales, 3): 
         print("\n" + " INICIANDO PEDIDO ".center(50,'*'))
-        carrito = tomar_pedido(menu, lista_productos)
+        carrito = tomar_pedido(menu, lista_productos) 
 
         if carrito:
             imprimir_ticket(carrito, menu)
