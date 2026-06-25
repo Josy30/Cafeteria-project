@@ -5,7 +5,7 @@ def main():
     print(" CAFETERÍA DMITRIEV ".center(50,'*'))
     print("\nBienvenido al sistema de autoservicio.")
 
-    # Configuración inicial 
+    # Configuración inicial
     credenciales = {"usuario": "josy", "contrasena": "josy"} 
     menu = {"cafe": 6, "sandwich": 10, "cheesecake": 8, "expreso": 4, "te": 8}
     lista_productos = list(menu.keys())
