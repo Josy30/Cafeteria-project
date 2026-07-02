@@ -2,7 +2,7 @@ from auth import iniciar_sesion
 from cafeteria import tomar_pedido, imprimir_ticket, entregar_pedido
 
 def main():
-    print(" CAFETERÍA DMITRIEV ".center(50,'*'))
+    print(" CAFETERÍA DMITRIEV ".center(50,'*')) 
     print("\nBienvenido al sistema de autoservicio.")
 
     # Configuración inicial 
