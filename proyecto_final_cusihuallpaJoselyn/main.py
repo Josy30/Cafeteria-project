@@ -10,7 +10,7 @@ def main():
     menu = {"cafe": 6, "sandwich": 10, "cheesecake": 8, "expreso": 4, "te": 8}
     lista_productos = list(menu.keys())
 
-    if iniciar_sesion(credenciales, 3): 
+    if iniciar_sesion(credenciales, 3):
         print("\n" + " INICIANDO PEDIDO ".center(50,'*'))
         carrito = tomar_pedido(menu, lista_productos) 
 
