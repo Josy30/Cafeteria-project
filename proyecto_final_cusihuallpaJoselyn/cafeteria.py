@@ -2,7 +2,7 @@ from datetime import datetime
 
 def tomar_pedido(menu, lista_productos):
     carrito = {}
-    continuar = True
+    continuar = True 
 
     while continuar:
         print("\n" + " Elije tus Productos ".center(30, '-'))
