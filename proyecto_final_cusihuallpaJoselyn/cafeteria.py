@@ -15,7 +15,7 @@ def tomar_pedido(menu, lista_productos):
 
         if opcion.isdigit() and 1 <= int(opcion) <= len(lista_productos):
             indice = int(opcion) - 1
-            producto_elegido = lista_productos[indice] 
+            producto_elegido = lista_productos[indice]
 
             while True:
                 cantidad = input(f"¿Cuántos {producto_elegido} deseas? : ")
