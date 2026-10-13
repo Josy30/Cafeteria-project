@@ -4,7 +4,7 @@ def tomar_pedido(menu, lista_productos):
     carrito = {}
     continuar = True 
 
-    while continuar:
+    while continuar: 
         print("\n" + " Elije tus Productos ".center(30, '-'))
 
         # Muestra el menú numerado para que el cliente elija fácil
