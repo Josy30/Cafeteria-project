@@ -1,7 +1,7 @@
 from datetime import datetime
 
 def tomar_pedido(menu, lista_productos):
-    carrito = {}
+    carrito = {} 
     continuar = True 
 
     while continuar: 
