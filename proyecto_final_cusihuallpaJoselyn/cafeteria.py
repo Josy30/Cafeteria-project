@@ -11,7 +11,7 @@ def tomar_pedido(menu, lista_productos):
         for i, nombre in enumerate(lista_productos, 1):
             print(f"{i}. {nombre.capitalize()} - ${menu[nombre]}")
         
-        opcion = input("\nSeleccione el NÚMERO del producto: ")
+        opcion = input("\nSeleccione el NÚMERO del producto: ") 
 
         if opcion.isdigit() and 1 <= int(opcion) <= len(lista_productos):
             indice = int(opcion) - 1
